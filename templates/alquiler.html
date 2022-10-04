@@ -1,0 +1,16 @@
+<div class="container venta detalle my-4 border border-3 rounded shadow">
+    <a class='link linkTitu my-4' href="/casaAlquiler">Alquileres</a>
+    <div class='container-fluid row justify-content-around mb-3 my-4'>
+        {% for a in range(3) %}
+        <div class="card cartita my-3 shadow border">
+            <a href="/detalles/{{casasAlq[a].0}}" ><img class="fotoCarta card-img-top img-fluid mt-2" src="../uploads/{{casasAlq[a].1}}" alt="..." /></a>
+            <div class="card-body">
+                <h5 class="card-title">{{casasAlq[a].2}}</h5>
+                <p class="card-text"> {{casasAlq[a].4}} m²</p> 
+                <p class="card-text">🚽🛁 &nbsp; {{casasAlq[a].6}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 🛏 &nbsp; {{casasAlq[a].5}}</p>
+                <a href="/detalles/{{casasAlq[a].0}}" class="position-center btn btn-success shadow">Detalles</a>
+            </div>
+         </div>
+         {% endfor %}
+    </div>
+</div>

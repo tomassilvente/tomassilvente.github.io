@@ -1,0 +1,39 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="casa pb-5">
+    <div class="container">
+        <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+        <h3 class="subT">Complete este formulario para agregar clientes</h3>
+        <div class="container text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} shadow" role="alert">
+                <strong>{{message}}</strong> 
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+          </div>
+        <div class=" estirar container detalle pt-5 pb-3 border-secondary border border-3 rounded shadow">
+            <form action="/addCliente" method="POST">
+                <div class="input-group mb-3"> 
+                    <input type="text" name="nombre" class="form-control shadow" placeholder="Nombre y Apellido" aria-label="Username" aria-describedby="basic-addon1" />
+                    <input type="email" name="email" class="form-control shadow" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text shadow">+54</span>
+                    <input type="tel" name="tel" class="form-control shadow" placeholder="Telefono" aria-label="Amount (to the nearest dollar)" />
+                    <span class="input-group-text shadow">Direccion</span>
+                    <input type="text" name="direccion" class="form-control shadow" placeholder="Direccion" aria-label="Username" aria-describedby="basic-addon1" />
+                    <span class="input-group-text shadow">Fecha de nacimiento</span>
+                    <input type="date" class="shadow rounded" name="fecha_nac" />
+                </div>
+                <button type="submit" class="btncon btn btn-dark shadow">Submit</button> 
+            </form>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}

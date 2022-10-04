@@ -1,0 +1,85 @@
+{% extends 'layout.html'%}
+
+{%block content%}
+<div class="casa pb-5">
+    <h1 class="adminTitu fonti"><a class="link text-dark">Administración de Inmobiliaria Centro</a></h1>    
+    <h3 class="subT">¿Que desea hacer?</h3>
+    <div class="container text-center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} shadow" role="alert">
+            <strong>{{message}}</strong> 
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class='container venta detalle my-4 border border-3 rounded shadow border-dark'>
+            <h3 class="subT"> Administración de casas </h3>
+            <div class="container-fluid row justify-content-around mb-3 my-4">
+                <div class="card cartita border shadow my-3">
+                    <div class="card-body my-3">
+                        <a href='/crearCasa'><img class="fotoCarta card-img-top img-fluid mt-2" src="https://thumbs.dreamstime.com/b/use-your-needs-like-house-bussines-sticker-etc-you-can-add-text-name-even-edit-logo-house-logo-green-color-109657284.jpg"></a>
+                        <h5 class="card-title text-center my-3">Agregar una nueva casa</h5>
+                        <a href='/crearCasa' class="position-center btn btn-dark w-50 shadow">Crear</a>
+                    </div>
+                </div>
+                <div class="card cartita border shadow my-3">
+                    <div class="card-body my-3">
+                        <a href="/listadoCasas"><img class="fotoCarta card-img-top img-fluid mt-2" src="https://thumbs.dreamstime.com/b/lista-de-comprobación-casa-plantilla-logotipo-inicio-icono-diseño-vectorial-226585876.jpg"></a>
+                        <h5 class="card-title text-center my-3">Ver Listado Completo</h5>
+                        <a href="/listadoCasas" class="position-center btn btn-dark w-50 shadow">Lista</a>
+                    </div>
+                </div>  
+            </div>
+    </div>
+    <div class='container venta detalle my-4 border border-3 rounded shadow border-dark'>
+        <h3 class="subT"> Administración de clientes </h3>
+        <div class='container-fluid row justify-content-around mb-3 my-4'>
+            <div class="card cartita border shadow mt-3">
+                <div class="card-body my-3">
+                    <a href='/crearCliente'><img class="fotoCarta card-img-top img-fluid mt-2" src='https://cdn.icon-icons.com/icons2/93/PNG/256/new_add_user_16734.png'></a>
+                    <h5 class="card-title text-center my-3">Agregar un nuevo cliente</h5>
+                    <a href='/crearCliente' class="position-center btn btn-dark w-50 shadow ">Agregar</a>
+                </div>
+            </div>
+            <div class="card cartita border shadow mt-3">
+                <div class="card-body my-3">
+                    <a href="/listadoClientes"><img class="fotoCarta card-img-top img-fluid mt-2" src='../static/css/img/listaClientes.png'></a>
+                    <h5 class="card-title text-center my-3">Ver Listado Completo</h5>
+                    <a href="/listadoClientes" class="position-center btn btn-dark w-50 shadow">Lista</a>
+                </div>
+            </div>
+            <div class="card cartita border shadow mt-3">
+                <div class="card-body my-3">
+                    <a href='/mensajes'><img class="fotoCarta card-img-top img-fluid mt-2" src='../static/css/img/mensaje.png'></a>
+                    <h5 class="card-title text-center my-3">Administrar Mensajes</h5>
+                    <a href='/mensajes' class="position-center btn btn-dark w-50 shadow ">Chequear</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='container venta detalle my-4 border border-3 rounded shadow border-dark'>
+        <h3 class="subT"> Administración de alquileres </h3>
+        <div class='container-fluid row justify-content-around mb-3 my-4'>
+            <div class="card cartita border shadow mt-3">
+                <div class="card-body my-3">
+                    <a href="/recibo"><img class="fotoCarta card-img-top img-fluid mt-2" src='https://images.ctfassets.net/214q1nptnllb/3wzpwjtWZZOR9UlXqe192O/68cb3d8442d83569c53657856e56b0d2/logo_nuevo.png'></a>
+                    <h5 class="card-title text-center my-3">Generar boleta</h5>
+                    <a href='/recibo' class="position-center btn btn-dark w-50 shadow ">Generar</a>
+                </div>
+            </div>
+            <div class="card cartita border shadow mt-3">
+                <div class="card-body my-3">
+                    <a href="/adminAlq"><img class="fotoCarta card-img-top img-fluid mt-2" src='https://thumbs.dreamstime.com/b/icono-de-la-atención-al-cliente-las-propiedades-inmobiliarias-acci-n-del-vector-154334691.jpg'></a>
+                    <h5 class="card-title text-center my-3">Administrar alquileres</h5>
+                    <a href="/adminAlq" class="position-center btn btn-dark w-50 shadow">Lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-dark btncon shadow" href="{{url_for('logout')}}">Cerrar Sesion</a>
+</div>
+{% include 'footer.html'%}
+{%endblock%}

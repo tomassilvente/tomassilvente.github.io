@@ -1,0 +1,35 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="detalle py-5">
+<h1 class="adminTitu fonti"><b>Administración de Inmobiliaria Centro</b></h1>
+<h3 class="subT">Por favor inicie sesión</h3>  
+
+<div class="container w-50 py-5 my-5 bg-light border border-2 shadow rounded-3 border-secondary">
+  <div class="container text-center">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}} shadow" role="alert">
+        <strong>{{message}}</strong> 
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <form class="inputlogin" action="/login" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"><b>Usuario</b></label>
+        <input type="text" class="inputt form-control shadow" name="user" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Jamas compartiremos información de incio de sesión con nadie.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Contraseña</b></label>
+        <input type="password" class="inputt form-control shadow" id="exampleInputPassword1" name="password">
+      </div>
+      <button type="submit" class="inputlogin btn btn-success shadow">Ingresar</button>
+  </form>
+</div>
+</div>
+{% include 'footer.html'%}
+{%endblock%}

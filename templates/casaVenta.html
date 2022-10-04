@@ -1,0 +1,61 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<div class="detalle text-center">
+    <a href="/casaVenta"class="adminTitu link text-dark mb-4">Casas en venta</a>
+    <div class="row">
+    <div class="container-fluid row col-4 align-items-center justify-content-around mb-3 my-5 w-75">
+        {% for casa in casas %}
+        <div class="card cartita my-3 mx-3 border border-3 shadow">
+            <a href="/detalles/{{casa.0}}"><img class="fotoCarta card-img-top img-fluid mt-2" src="../uploads/{{casa.1}}" alt="..." /></a>
+            <div class="card-body">
+                <h5 class="card-title">{{casa.2}}</h5>
+                <p class="card-text">{{casa.3}} de {{casa.4}} metros cuadrados, {{casa.5}} habitaciones y {{casa.6}} baños</p>
+                <a href="/detalles/{{casa.0}}" class="position-center btn btn-primary ">Detalles</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-lg filtros mt-5 mb-4 py-3 border-secondary border border-3 rounded">
+        <form action="/filtrarVenta" method="POST">
+            <h5 for="customRange2" class="form-label text-white">Filtrar Busqueda</h5>
+            <div class="input-group mt-4">
+                <label class="input-group-text" id="inputGroup-sizing-default">m²</label>
+                <input type="number" name="metros" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="metros">
+            </div>
+            <select class="form-select mt-4" name="tipo">
+                <option value="casa">Casa</option>
+                <option value="departamento">Departamento</option>
+                <option value="local">Local</option>
+            </select>
+            <select class="form-select mt-4" name="habitaciones">
+                <option selected>Habitaciones</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <select class="form-select mt-4" name="banos">
+                <option selected>Banos</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <select class="form-select mt-4" name="ambientes">
+                <option selected>Ambientes</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <button class="btn btn-success mt-5 w-50" type="submit">Buscar</button>
+        </form>
+    </div>
+    </div>
+</div>
+
+{% include 'footer.html'%}
+{%endblock%}

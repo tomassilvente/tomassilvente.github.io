@@ -1,0 +1,54 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="casa">
+    <div class="container">
+    <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+    <h3 class="subT">Listado de Clientes</h3>
+    <div class="container text-center">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{category}} shadow" role="alert">
+          <strong>{{message}}</strong> 
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <table class="table table-dark table-striped shadow">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">
+              <form action="/filtrarCliente" method="POST">
+                 <input placeholder="Buscar" class="mx-2 w-50 border border-1 rounded" name="nombre">
+                 <button type="submit" class="btn btn-sm btn-light">Buscar</button>
+              </form>
+           </th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <th scope="row">{{cliente.1}}</th>
+                <td>{{cliente.2}}</td>
+                <td>{{cliente.3}}</td>
+                <td>{{cliente.4}}</td>
+                <td>{{cliente.5}}</td>
+                <td>
+                    <a href="/editCliente/{{cliente.0}}" class="text-decoration-none text-light"> Modificar </a>
+                    <a href="/deleteCliente/{{cliente.0}}" class="eliminar text-decoration-none text-light"> Eliminar </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% include 'footer.html'%}
+</div>
+{%endblock%}

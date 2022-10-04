@@ -1,0 +1,213 @@
+body {
+    margin: 0;  
+    font-family: 'Yrsa', serif;
+    background-image: url('img/marmol.jpg');
+    background-size: cover;
+  }
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  }
+  
+ nav{
+    background-color: rgb(168, 166, 166);
+    font-size: 18px;
+  }
+  .navbar{
+    z-index: 1;
+  }
+  .letra{
+    font-size: 20px;
+  }
+  .presentacion{
+    background-image: url('img/casa.jpg');
+    background-position-y: -270px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.62);
+    /*font-family: 'Kalam', cursive;*/
+    padding-top: 100px;
+    padding-bottom: 200px;
+  }
+  .hero-text{
+    margin-left: 10px;
+    font-size: 100px;
+  }
+  .presentacion>h2{
+    font-size: 50px;
+    margin-left: 35px;
+  }
+  .alq{
+    text-align: center;
+    background: rgb(177,177,177);
+    padding-top: 15px;
+  }
+  .linkTitu{
+    font-size: 40px;
+    color:black
+  }
+  .venta{
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  
+  .filtros{
+    max-width: 23%;
+    background-color: rgb(128, 128, 128);
+  }
+
+  .cont-card{
+    padding-top: 40px ;
+  }
+  .cartita{
+    width: 18rem;
+    border-radius: 10px;
+  }
+  .fotoCarta{
+    height: 200px;
+    max-width: 100%;
+  }
+  
+  .contacto{
+    padding-top: 50px;
+    padding-bottom: 45px;
+    background-image: url('img/white.jpg');
+    /*background-image: url('img/negro.jpeg');*/
+    background-size: cover;
+  }
+  .contact{
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  .contacth3{
+    color:white;
+    font-size: 60px;
+    margin-bottom: 50px;
+  }
+  .btncon{
+    margin-top: 20px;
+    position: relative;
+    width: 50%;
+    margin-left: 25%;
+  }
+  input,textarea{
+    margin-right: 30px ;
+  }
+  
+  
+  .area{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: rgb(177,177,177);
+    background: linear-gradient(0deg, rgba(177,177,177,0.9905809859154929) 12%, rgba(226,226,226,1) 100%);
+    max-width: 100%;
+  }
+  .imagen{
+    max-height: 180px;
+    border-radius: 100px;
+  }
+
+  .desc{
+    background-color: rgba(255, 253, 253, 0.372);
+    font-family:'Courier New', Courier, monospace
+  }
+  
+  .titu{
+    margin-bottom: 20px
+  }
+  
+  .link{
+    text-decoration: none;
+    display: inline-block;
+    position: relative ;
+  }
+  .linkTitu:hover{
+    color:rgb(0, 0, 0);
+  }
+  .link::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.6s ease-out;
+  }
+  a:hover::after{ 
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  .futer{
+    color: white;
+    background-color: rgb(87, 87, 87);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 100%;
+  }
+  .todo{
+    background: rgba(226,226,226,1)
+  }
+  .inputlogin{
+    text-align: center;
+  }
+  .adminTitu{
+    padding-top: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+  .color{
+    color:rgb(184,0,0);
+  }
+  .color:hover{
+    color:rgb(184,0,0);
+  }
+  .subT{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+  
+  .introAdmin{
+    background-image: url('https://fondosmil.com/fondo/36867.jpg');
+    background-size: cover;
+    max-width: 100%;
+  }
+  .titu{
+    padding-bottom: 30px;
+    color:white;
+    text-align: center;
+    font-size: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+  .casa{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(100,100,100,1) 50%, rgba(255,255,255,1) 100%);
+  }
+  .fondo{
+    background-image: url('img/marmol.jpg') ;
+    background-size: cover;
+  }
+  .formulario{
+    background-color: rgba(233, 233, 233, 1);
+  }
+  .detalle{
+    background-image: url('img/white.jpg');
+    background-size: cover;
+
+  }
+  .fonti{
+    font-family: 'Saira Condensed', sans-serif;
+  }
+  .estirar{
+    margin-bottom: 110px ;
+  }
+  .estirar2{
+    margin-bottom: 270px;
+  }

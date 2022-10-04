@@ -1,0 +1,25 @@
+{% extends "layout.html"%}
+
+
+{% block content %}
+<div class="presentacion">
+        <div class="container text-center">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}} shadow" role="alert">
+                    <strong>{{message}}</strong> 
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+        </div>
+        <h1 class="hero-text text-xl-center pt-xl-5">Inmobiliaria Centro</h1>
+</div>
+
+{% include 'alquiler.html'%}
+{% include 'ventas.html'%}
+{% include 'contact.html'%}
+{% include 'footer.html'%}
+
+{% endblock %}

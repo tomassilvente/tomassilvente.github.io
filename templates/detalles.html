@@ -1,0 +1,60 @@
+{% extends 'layout.html'%}
+
+{%block content%}
+<div class="fondo">
+<div class="container detalle border-secondary shadow text-center border border-3 rounded">
+    <a class="adminTitu link text-dark"> {{casa.2}}</a>
+    <div class="container text-start">
+        <div class="row ">
+            <div class="pt-5 w-50">
+                <img class="mb-3 tamano shadow" src="../uploads/{{casa.1}}" width="90%">
+            </div>
+            <div class="desc container-fluid row align-items-center shadow justify-content-around my-5 w-50 border border-3 rounded">
+                <h4 class="pt-3"><b>{{casa.12}}  &nbsp;&nbsp;&nbsp;&nbsp;     ${{casa.13}} {{casa.14}}</b></h4>
+                <p>{{casa.11}}</p>
+                <h5>Este inmueble ({{casa.3}}) cuenta con <b>{{casa.4}}</b> metros cuadrados totales</h5>
+                <h5>{{casa.9}} son cubiertos y {{casa.10}} son descubiertos</h5>
+                <h5 class="py-4">🚽 🛁 &nbsp;<b> {{casa.6}} </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 🛏 &nbsp; <b>{{casa.5}}</b> </h5>
+                <h5>{{casa.7}} Ambientes  &nbsp;&nbsp;&nbsp;  {{casa.8}} cochera/s</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center py-4 my-3 formulario detalle border-secondary border border-3 rounded shadow">
+        <div class="container text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} shadow" role="alert">
+                <strong>{{message}}</strong> 
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <h3 class="subT ">¿Está interesado en ella?</h3>
+        <h5 class="mb-3">¡Cuéntenos aquí abajo si quiere saber más sobre éste inmueble!</h5>
+        <form action="/add_cliente_detalles" method="POST" class='contact'>
+            <div class="input-group mb-3"> 
+                <input type="text" name="id"  hidden="true" value="{{casa.0}}">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre y Apellido" aria-label="Username" aria-describedby="basic-addon1" />
+                <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">+54</span>
+                <input type="tel" name="tel" class="form-control" placeholder="Telefono" aria-label="Amount (to the nearest dollar)" />
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Comentario</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success w-25 mt-3 shadow">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%include 'footer.html'%}
+
+{%endblock%}

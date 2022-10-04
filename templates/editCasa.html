@@ -1,0 +1,78 @@
+{% extends 'layout.html'%}
+{%block content%}
+<div class="casa">
+    <div class="container">
+    <h1 class="adminTitu mb-3 fonti"><a href='/introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+    <h3 class="subT">Edite este formulario para editar una casa</h3>
+    <form action="/update/{{casa.0}}" method="POST"  class="container detalle py-5 border-secondary border border-3 rounded shadow" enctype="multipart/form-data">
+        <div class="container text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} shadow" role="alert">
+                <strong>{{message}}</strong> 
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <input type="text" name="id"  hidden="true" value="{{casa.0}}">
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Ubicación de la casa</span>
+            <input type="text" class="form-control shadow" value="{{casa.2}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="direccion">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Tipo inmueble</span>
+            <select class="form-select form-select shadow"  name="inmueble">
+                <option value="{{casa.3}}">Casa</option>
+                <option value="departamento">Departamento</option>
+                <option value="local">Local</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Totales</span>
+            <input type="number" class="form-control shadow" value="{{casa.4}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="metros">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Cubiertos</span>
+            <input type="number" class="form-control shadow" value="{{casa.9}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="metros_cubiertos">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Descubiertos</span>
+            <input type="number" class="form-control shadow" value="{{casa.10}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="metros_patio">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Baños</span>
+            <input type="number" class="form-control shadow" value="{{casa.6}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="banos">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Habitaciones</span>
+            <input type="number" class="form-control shadow" value="{{casa.5}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="habitaciones">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Ambientes</span>
+            <input type="number" class="form-control shadow" value="{{casa.7}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="ambientes">
+        </div>
+        <div class="input-group">
+            <select class="form-select form-select-sm shadow" aria-label="multiple select example" name="cochera" value="{{casa.7}}">
+                <option selected value="{{casa.8}}">{{casa.8}}</option>
+                <option value="0">Sin cochera</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <select class="form-select form-select-sm shadow cochera mx-1" aria-label="multiple select example" name="estado" value="{{casa.11}}">
+                <option selected value="{{casa.12}}">{{casa.12}}</option>
+                <option value="alquiler">Alquiler</option>
+                <option value="venta">Venta</option>
+            </select>
+            <select class="form-select form-select-sm shadow cochera mx-1" name="moneda">
+                <option selected value="{{casa.14}}">{{casa.14}}</option>
+                <option value="USD">USD</option>
+                <option value="ARS">ARS</option>
+            </select>
+            <input class="mx-1 shadow" type="number" name="precio" value="{{casa.13}}" placeholder="Precio" >
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Descripción de la casa</label>
+            <input class="form-control shadow" id="exampleFormControlTextarea1" rows="3" type="text" name="descrip" value="{{casa.11}}"></input>
+            
+        </div>
+        <button type="submit" class="btncon btn btn-dark shadow">Actualizar</button>      
+    </form>
+    <br><br>
+    </div>
+</div>
+{%include 'footer.html'%}
+{%endblock%}

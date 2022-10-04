@@ -1,0 +1,77 @@
+{% extends 'layout.html'%}
+
+{% block content %}  
+<div class="casa">
+    
+    <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+    <h3 class="subT">Complete este formulario para agregar una nueva casa a la pagina</h3>
+    <div class="container text-center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} shadow" role="alert">
+            <strong>{{message}}</strong> 
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form action="/addCasa" method="POST"  class="container detalle py-5 border-secondary border border-3 rounded shadow" enctype="multipart/form-data">
+        <div class="inputlogin input-group mb-3">
+            <input class="form-control shadow" type="file" id="formFileMultiple" name="image_url"  multiple>
+            <label for="formFileMultiple" class="form-label">Seleccione multiples imagenes</label>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Ubicación de la casa</span>
+            <input type="text shadow" class="form-control shadow" name="direccion">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Tipo inmueble</span>
+            <select class="form-select form-select shadow"  name="inmueble">
+                <option value="casa">Casa</option>
+                <option value="departamento">Departamento</option>
+                <option value="local">Local</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Totales</span>
+            <input type="number" class="form-control shadow" name="metros">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Cubiertos</span>
+            <input type="number" class="form-control shadow" name="metros_cubiertos">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">m² Descubiertos</span>
+            <input type="number" class="form-control shadow" name="metros_patio">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Baños</span>
+            <input type="number" class="form-control shadow" name="banos">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Habitaciones</span>
+            <input type="number" class="form-control shadow" name="habitaciones">
+            <span class="input-group-text shadow" id="inputGroup-sizing-default">Ambientes</span>
+            <input type="number" class="form-control shadow" name="ambientes">
+        </div>
+        <div class="input-group">
+            <select class="form-select shadow form-select-sm"  name="cochera">
+                <option value="0">Sin cochera</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <select class="form-select form-select-sm cochera shadow mx-1" name="estado">
+                <option value="alquiler">Alquiler</option>
+                <option value="venta">Venta</option>
+            </select>
+            <select class="form-select form-select-sm cochera shadow mx-1" name="moneda">
+                <option value="USD">USD</option>
+                <option value="ARS">ARS</option>
+            </select>
+            <input type="number" name="precio" class="mx-1 shadow" placeholder="Precio">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Descripción de la casa</label>
+            <textarea class="form-control shadow" id="exampleFormControlTextarea1" rows="3" name="descrip"></textarea>
+        </div>
+        <button type="submit" class="btncon btn btn-dark shadow">Submit</button>      
+    </form>
+    <br>
+</div>
+{% include 'footer.html'%}
+{%endblock%}

@@ -1,0 +1,47 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<div class="casa">
+    <div class="container">
+    <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+    <h3 class="subT">Mensajes</h3>
+    <div class="container text-center estirar">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{category}} shadow" role="alert">
+          <strong>{{message}}</strong> 
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <table class="table table-dark table-striped estirar2 shadow">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Mensaje</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for mensaje in mensajes %}
+            <tr>
+                <th scope="row">{{mensaje.1}}</th>
+                <td>{{mensaje.2}}</td>
+                <td>{{mensaje.3}}</td>
+                <td>{{mensaje.4}}</td>
+                <td>
+                    <a href="/deleteMensaje/{{mensaje.0}}" class="eliminar text-decoration-none text-light"> Eliminar </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+{%include 'footer.html' %}
+{%endblock%}

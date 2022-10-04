@@ -1,0 +1,64 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="casa">
+    <div class="container">
+    <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+    <h3 class="subT">Listado de Casas</h3>
+    <div class="container text-center">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{category}} shadow" role="alert">
+          <strong>{{message}}</strong> 
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <table class="table table-dark table-striped shadow">
+        <thead>
+          <tr>
+            <th scope="col">Direccion</th>
+            <th escope="col">Tipo</th>
+            <th scope="col">M²</th>
+            <th scope="col">Hab</th>
+            <th scope="col">Baños</th>
+            <th scope="col">Ambientes</th>
+            <th scope="col">Cochera</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Moneda</th>
+            <th scope="col">
+               <form action="/filtrarCasa" method="POST">
+                  <input placeholder="Buscar" class="mx-2 w-50 border border-1 rounded" name="casa">
+                  <button type="submit" class="btn btn-sm btn-light">Buscar</button>
+               </form>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for casa in casas %}
+            <tr>
+                <th scope="row">{{casa.2}}</th>
+                <td>{{casa.3}}</td>
+                <td>{{casa.4}}</td>
+                <td>{{casa.5}}</td>
+                <td>{{casa.6}}</td>
+                <td>{{casa.7}}</td>
+                <td>{{casa.8}}</td>
+                <td>{{casa.12}}</td>
+                <td>{{casa.13}}</td>
+                <td>{{casa.14}}</td>
+                <td>
+                    <a href="/editCasa/{{casa.0}}" class="text-decoration-none text-light"> Modificar </a>
+                    <a href="/deleteCasa/{{casa.0}}" class="text-decoration-none text-light"> Eliminar </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% include 'footer.html'%}
+</div>
+{%endblock%}

@@ -1,0 +1,60 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="casa pb-5">
+    <div class="container">
+        <h1 class="adminTitu fonti"><a href='introAdmin' class="link text-dark">Administración de Inmobiliaria Centro</a></h1>
+        <h3 class="subT">Complete este formulario para agregar clientes</h3>
+        <div class="container text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} shadow" role="alert">
+                <strong>{{message}}</strong> 
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="container detalle pt-5 pb-3 border-secondary border border-3 rounded shadow">
+            <div class="flex-column">
+                <label for="formFileMultiple" class="form-label col-4">Seleccione locador</label> 
+                <label for="formFileMultiple" class="form-label col-4">Seleccione locatorio</label> 
+                <label for="formFileMultiple" class="form-label col-3">Seleccione propiedad</label> 
+            </div>
+            <form action="/addAlquiler" method="POST">
+                    <div class="input-group mb-3">
+                        <select class="form-select form-select-lg mb-3 shadow" aria-label=".form-select-lg example" name="dueno">
+                            {%for cliente in clientes%}
+                                <option value="{{cliente.1}}"> {{cliente.1}} </option>
+                            {%endfor%}
+                        </select>
+                        
+                        <select class="form-select form-select-lg mb-3 shadow" aria-label=".form-select-lg example" name="inquilino">
+                            {%for cliente in clientes%}
+                                <option value="{{cliente.1}}"> {{cliente.1}} </option>
+                            {%endfor%}
+                        </select>
+                        
+                        <select class="form-select form-select-lg mb-3 shadow" aria-label=".form-select-lg example" name="casa">
+                            {%for casa in casas%}
+                                <option value="{{casa.2}}"> {{casa.2}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text shadow">Agua/ Otros</span>
+                        <input type="text" name="agua" class="form-control shadow" placeholder="None"/>
+                        <span class="input-group-text shadow ">Precio por mes</span>
+                        <input type="number" name="precio" class="form-control shadow">
+                        <span class="input-group-text shadow ">Dia de pago</span>
+                        <input type="number" name="dia" class="form-control shadow">
+                    </div>
+                    <button type="submit" class="btncon btn btn-dark shadow">Ingresar</button> 
+            </form>
+        </div>
+        <p class="mt-5">Si la casa/clientes que quieres agregar no aparece en la lista es porque no estan en tu base de datos, agregala desde Administracion clientes/propiedades -> agregar nuevo.</p>
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}

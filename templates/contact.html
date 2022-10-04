@@ -1,0 +1,23 @@
+{%block content %}
+<div class="contacto position-center container my-4 border border-3 rounded shadow">
+    <h2 class="contacth3 text-center text-dark"> Contactar </h2>
+    <form action="/add_cliente_index" method="POST" class='contact'>
+        <div class="input-group mb-3"> 
+            <input type="text" name="nombre" class="form-control shadow" placeholder="Nombre y Apellido" aria-label="Username" aria-describedby="basic-addon1" />
+            <input type="email" name="email" class="form-control shadow" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text shadow">+54</span>
+            <input type="tel" name="tel" class="form-control shadow" placeholder="Telefono" aria-label="Amount (to the nearest dollar)" />
+        </div>
+        <div class="input-group">
+            <span class="input-group-text shadow">Comentario</span>
+            <textarea class="form-control shadow" aria-label="With textarea" name="coment"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btncon btn btn-success shadow">Enviar</button>
+        </div>
+    </form>
+</div>
+{%endblock%}
